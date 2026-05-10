@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <title>Spotify Visualization</title>
+
+  <!-- Vega -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+
+  <!-- Vega Lite -->
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+
+  <!-- Vega Embed -->
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+
+</head>
+
+<body>
+
+  <header>
+    <h1>🎵 What Makes Music Popular on Spotify?</h1>
+
+    <p>
+      Explore how danceability, energy, and genre influence popularity.
+    </p>
+  </header>
+
+  <main>
+
+    <div id="dashboard">
+
+      <div id="scatter"></div>
+
+      <div id="genreChart"></div>
+
+    </div>
+
+    <div id="radarContainer">
+
+      <h2>Song Audio Features</h2>
+
+      <svg id="radarChart" width="500" height="500"></svg>
+
+    </div>
+
+  </main>
+
+  <!-- JS -->
+  <script src="js/dashboard.js"></script>
+
+  <script src="js/radar.js"></script>
+
+</body>
+
+</html>
