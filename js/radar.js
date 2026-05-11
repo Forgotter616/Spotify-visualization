@@ -17,8 +17,10 @@ function drawRadarChart(song) {
     .attr("x", centerX)
     .attr("y", 30)
     .attr("text-anchor", "middle")
-    .attr("fill", "white")
-    .attr("font-size", "20px")
+    .attr("fill", "#ffffff")
+    .attr("font-size", "22px")
+    .attr("font-weight", "bold")
+    .attr("font-family", "'Montserrat', sans-serif")
     .text(song.track_name);
 
   const features = [
@@ -169,14 +171,14 @@ function drawRadarChart(song) {
     .attr("stroke-width", 1.5)
     .style("cursor", "crosshair")
     .on("mouseover", (event, d) => {
-      tooltip.style("opacity", 1)
-        .html(`<strong>${d.feature}</strong>: ${(d.value).toString().substring(0,6)}`);
+      tooltip.classed("show", true)
+        .html(`<strong>${d.feature.toUpperCase()}</strong><br/><span style="color:#1DB954">${(d.value).toString().substring(0,6)}</span>`);
     })
     .on("mousemove", (event) => {
-      tooltip.style("left", (event.pageX + 10) + "px")
-             .style("top", (event.pageY - 10) + "px");
+      tooltip.style("left", (event.pageX + 15) + "px")
+             .style("top", (event.pageY - 20) + "px");
     })
     .on("mouseout", () => {
-      tooltip.style("opacity", 0);
+      tooltip.classed("show", false);
     });
 }

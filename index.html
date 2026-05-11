@@ -2,9 +2,10 @@
 <html lang="en">
 
 <head>
+
   <meta charset="UTF-8">
 
-  <title>Spotify Visualization</title>
+  <title>Spotify Visualization Dashboard</title>
 
   <!-- Vega -->
   <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
@@ -15,44 +16,148 @@
   <!-- Vega Embed -->
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
 
+  <!-- D3 -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+
+  <!-- Font -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap"
+    rel="stylesheet"
+  >
+
   <!-- CSS -->
   <link rel="stylesheet" href="css/style.css">
-
-  <script src="https://d3js.org/d3.v7.min.js"></script>
 
 </head>
 
 <body>
 
+  <!-- ===================== -->
+  <!-- Header -->
+  <!-- ===================== -->
+
   <header>
-    <h1>🎵 What Makes Music Popular on Spotify?</h1>
+
+    <h1>
+      <span>🎵</span>
+      What Makes Music Popular on Spotify?
+    </h1>
 
     <p>
-      Explore how danceability, energy, and genre influence popularity.
+      Explore how audio features and genre influence song popularity.
     </p>
+
   </header>
+
+
+  <!-- ===================== -->
+  <!-- Controls -->
+  <!-- ===================== -->
+
+  <section id="controls">
+
+    <!-- Feature Selector -->
+    <div class="control-group">
+
+      <label for="featureSelect">
+        Feature
+      </label>
+
+      <select id="featureSelect">
+
+        <option value="danceability">
+          danceability
+        </option>
+
+        <option value="energy">
+          energy
+        </option>
+
+        <option value="valence">
+          valence
+        </option>
+
+        <option value="acousticness">
+          acousticness
+        </option>
+
+        <option value="speechiness">
+          speechiness
+        </option>
+
+        <option value="tempo">
+          tempo
+        </option>
+
+      </select>
+
+    </div>
+
+
+    <!-- Sample Slider -->
+    <div class="control-group">
+
+      <label for="sampleSlider">
+        Sample Size
+      </label>
+
+      <input
+        type="range"
+        id="sampleSlider"
+        min="100"
+        max="5000"
+        step="100"
+        value="1000"
+      >
+
+      <span id="sampleValue">
+        1000
+      </span>
+
+    </div>
+
+  </section>
+
+
+  <!-- ===================== -->
+  <!-- Main Dashboard -->
+  <!-- ===================== -->
 
   <main>
 
     <div id="dashboard">
 
-      <div id="scatter"></div>
+      <!-- Scatter Plot -->
+      <div id="scatter" class="card"></div>
 
-      <div id="genreChart"></div>
+      <!-- Genre Chart -->
+      <div id="genreChart" class="card"></div>
 
     </div>
 
-    <div id="radarContainer">
 
-      <h2>Song Audio Features</h2>
+    <!-- Radar Chart -->
+    <div id="radarContainer" class="card">
 
-      <svg id="radarChart" width="500" height="500"></svg>
+      <h2>
+        Song Audio Features
+      </h2>
+
+      <svg
+        id="radarChart"
+        width="600"
+        height="500"
+      ></svg>
 
     </div>
 
   </main>
 
-  <!-- JS -->
+
+  <!-- ===================== -->
+  <!-- JavaScript -->
+  <!-- ===================== -->
+
   <script src="js/dashboard.js"></script>
 
   <script src="js/radar.js"></script>

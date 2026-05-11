@@ -1,74 +1,183 @@
 body {
   margin: 0;
-  background: #121212;
-  color: white;
-  font-family: Arial, sans-serif;
+  /* Spotify official dark gradient background */
+  background: linear-gradient(135deg, #191414 0%, #121212 100%);
+  background-attachment: fixed;
+  color: #B3B3B3; /* Spotify standard secondary text */
+  font-family: 'Montserrat', Arial, sans-serif;
+  line-height: 1.6;
 }
 
 header {
   text-align: center;
-  padding: 20px;
+  padding: 40px 20px 20px;
 }
 
 h1 {
-  color: #1DB954;
+  color: #FFFFFF;
+  font-weight: 700;
+  margin-bottom: 5px;
+  font-size: 2.5rem;
+  letter-spacing: -1px;
+}
+
+h1 span {
+  color: #1DB954; /* Spotify Green */
+}
+
+h2 {
+  color: #FFFFFF;
+  font-weight: 600;
+  margin-top: 0;
+}
+
+header p {
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 main {
   padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Glassmorphism & Hover transition base for cards */
+.card {
+  background: rgba(40, 40, 40, 0.6); /* Slightly transparent Spotify card dark */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  background: rgba(62, 62, 62, 0.7); /* Lighter on hover */
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.5);
 }
 
 #dashboard {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap; /* Responsive */
   gap: 20px;
 }
 
 #scatter {
   flex: 3;
-  background: #1e1e1e;
-  border-radius: 12px;
-  padding: 20px;
+  min-width: 400px;
 }
 
 #genreChart {
   flex: 1;
-  background: #1e1e1e;
-  border-radius: 12px;
-  padding: 20px;
+  min-width: 280px;
   max-height: 600px;
   overflow-y: auto;
 }
 
+#genreChart::-webkit-scrollbar {
+  width: 8px;
+}
+
+#genreChart::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+#genreChart::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
+#genreChart::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
 #radarContainer {
-
   margin-top: 20px;
-
-  background: #1e1e1e;
-
-  border-radius: 12px;
-
-  padding: 20px;
 }
 
 #radarChart {
-
   display: block;
-
   margin: auto;
 }
 
+/* Advanced Tooltip Styling */
 .radar-tooltip {
   position: absolute;
-  background-color: rgba(0, 0, 0, 0.85);
-  color: white;
-  padding: 6px 12px;
-  border-radius: 4px;
+  background-color: rgba(25, 20, 20, 0.95);
+  color: #FFFFFF;
+  padding: 10px 16px;
+  border-radius: 8px;
   pointer-events: none;
-  font-family: Arial, sans-serif;
-  font-size: 13px;
-  box-shadow: 0px 2px 4px rgba(0,0,0,0.5);
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   opacity: 0;
-  transition: opacity 0.2s ease-in-out;
+  backdrop-filter: blur(4px);
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
   z-index: 1000;
+}
+
+.radar-tooltip.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Vega-lite specific wrapper adjustments */
+.vega-embed {
+  width: 100%;
+  overflow-x: auto;
+}
+.vega-embed summary {
+  background: white;
+  border-radius: 50%;
+  opacity: 0.5;
+}
+.vega-embed summary:hover {
+  opacity: 1;
+}
+
+#controls {
+
+  display: flex;
+
+  justify-content: center;
+
+  gap: 30px;
+
+  margin-bottom: 20px;
+}
+
+.control-group {
+
+  background: #1e1e1e;
+
+  padding: 10px 20px;
+
+  border-radius: 10px;
+}
+
+input[type="range"] {
+
+  width: 200px;
+}
+
+select {
+
+  background: #121212;
+
+  color: white;
+
+  border: 1px solid #333;
+
+  padding: 5px;
 }
